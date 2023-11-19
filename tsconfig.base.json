@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@e2e-testing/components": ["common/components/src/index.ts"],
+      "@e2e-testing/features": ["common/features/src/index.ts"],
+      "@e2e-testing/styles": ["common/styles/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
