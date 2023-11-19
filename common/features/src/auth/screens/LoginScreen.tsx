@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import AuthLayout from '../layouts/AuthLayout';
 import { Button, Typography } from '@mui/material';
 import { FormTextField } from '@e2e-testing/components';
@@ -12,7 +12,7 @@ const LoginScreen: FC = () => {
   const {
     handleSubmit,
     control,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isValid },
   } = useForm<LoginForm>({
     defaultValues: DEFAULT_LOGIN_FORM,
     mode: 'onChange',
@@ -24,6 +24,10 @@ const LoginScreen: FC = () => {
 
     console.log(values);
   };
+
+  useEffect(() => {
+    document.title = 'Login Screen';
+  }, []);
 
   return (
     <AuthLayout>
@@ -41,19 +45,22 @@ const LoginScreen: FC = () => {
           name="email"
           label="Email"
           textFieldProps={{ sx: { mb: 2 } }}
+          dataTestId="login-input-email"
         />
         <FormTextField
           control={control}
           name="password"
           label="Password"
           textFieldProps={{ sx: { mb: 4 }, type: 'password' }}
+          dataTestId="login-input-password"
         />
         <Button
           variant="contained"
           type="submit"
           fullWidth
-          disabled={isSubmitting}
+          disabled={isSubmitting || !isValid}
           size="large"
+          data-testid="login-button"
         >
           Login
         </Button>

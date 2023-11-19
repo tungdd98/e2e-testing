@@ -11,7 +11,7 @@ const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
       container
       justifyContent="center"
       alignItems="center"
-      sx={{ minHeight: '100vh', bgcolor: 'grey.100' }}
+      sx={{ minHeight: '100vh', bgcolor: 'grey.100', px: 2 }}
     >
       <Grid item xs={12} md={4}>
         <Paper sx={{ p: 3 }}>{children}</Paper>

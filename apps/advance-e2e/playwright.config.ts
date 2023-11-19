@@ -1,10 +1,16 @@
 import { defineConfig } from '@playwright/test';
 import { nxE2EPreset } from '@nx/playwright/preset';
+import { defineBddConfig } from 'playwright-bdd';
 
 import { workspaceRoot } from '@nx/devkit';
 
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = process.env['BASE_URL'] || 'http://localhost:4200';
+
+const testDir = defineBddConfig({
+  paths: ['src/features/**/*.feature'],
+  require: ['src/steps/**/*.ts'],
+});
 
 /**
  * Read environment variables from file.
@@ -16,7 +22,7 @@ const baseURL = process.env['BASE_URL'] || 'http://localhost:4200';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  ...nxE2EPreset(__filename, { testDir: './src' }),
+  ...nxE2EPreset(__filename, { testDir }),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL,

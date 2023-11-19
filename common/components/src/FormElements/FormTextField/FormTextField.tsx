@@ -5,6 +5,7 @@ import { FormInputProps } from '../form.types';
 
 type FormTextFieldProps = FormInputProps & {
   textFieldProps?: TextFieldProps;
+  dataTestId?: string;
 };
 
 const FormTextField: FC<FormTextFieldProps> = ({
@@ -12,6 +13,7 @@ const FormTextField: FC<FormTextFieldProps> = ({
   control,
   label,
   textFieldProps,
+  dataTestId,
 }) => {
   return (
     <Controller
@@ -28,6 +30,10 @@ const FormTextField: FC<FormTextFieldProps> = ({
           label={label}
           variant="outlined"
           {...textFieldProps}
+          inputProps={{ 'data-testid': dataTestId }}
+          FormHelperTextProps={{
+            id: `${dataTestId}-error`,
+          }}
         />
       )}
     />

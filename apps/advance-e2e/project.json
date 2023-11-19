@@ -4,8 +4,15 @@
   "projectType": "application",
   "sourceRoot": "apps/advance-e2e/src",
   "targets": {
+    "bddgen": {
+      "command": "bddgen",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
     "e2e": {
       "executor": "@nx/playwright:playwright",
+      "dependsOn": ["bddgen"],
       "outputs": ["{workspaceRoot}/dist/.playwright/apps/advance-e2e"],
       "options": {
         "config": "apps/advance-e2e/playwright.config.ts"
