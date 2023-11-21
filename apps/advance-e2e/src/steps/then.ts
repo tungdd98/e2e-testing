@@ -17,7 +17,7 @@ Then('Verify that title is {string}', async ({ page }, title) => {
  */
 Then('Verify that the {string} is inactive', async ({ page }, selector) => {
   const elm = page.getByTestId(selector);
-  await elm.isDisabled();
+  await expect(elm).toBeDisabled();
 });
 
 /**
@@ -26,7 +26,7 @@ Then('Verify that the {string} is inactive', async ({ page }, selector) => {
  */
 Then('Verify that the {string} is active', async ({ page }, selector) => {
   const elm = page.getByTestId(selector);
-  await elm.isEnabled();
+  await expect(elm).toBeEnabled();
 });
 
 /**
@@ -35,7 +35,7 @@ Then('Verify that the {string} is active', async ({ page }, selector) => {
  */
 Then('Verify that the {string} is displayed', async ({ page }, selector) => {
   const elm = page.getByTestId(selector);
-  await elm.isVisible();
+  await expect(elm).toBeVisible();
 });
 
 /**
@@ -44,5 +44,5 @@ Then('Verify that the {string} is displayed', async ({ page }, selector) => {
  */
 Then('Verify that the {string} is hidden', async ({ page }, selector) => {
   const elm = page.getByTestId(selector);
-  await elm.isHidden();
+  await expect(elm).toBeHidden();
 });

@@ -14,7 +14,7 @@ Example: `nx serve advance`
 
 To start the development server run `npx nx e2e <app-e2e>`.
 
-Example: `nx serve advance-e2e`
+Example: `npx nx e2e advance-e2e`
 
 ## Generate code
 

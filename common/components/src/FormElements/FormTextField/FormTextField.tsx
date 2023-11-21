@@ -1,6 +1,6 @@
 import React, { FC, memo } from 'react';
 import { Controller } from 'react-hook-form';
-import { TextField, TextFieldProps } from '@mui/material';
+import { Box, TextField, TextFieldProps, Typography } from '@mui/material';
 import { FormInputProps } from '../form.types';
 
 type FormTextFieldProps = FormInputProps & {
@@ -20,21 +20,30 @@ const FormTextField: FC<FormTextFieldProps> = ({
       name={name}
       control={control}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <TextField
-          helperText={error ? error.message : null}
-          size="small"
-          error={!!error}
-          onChange={onChange}
-          value={value}
-          fullWidth
-          label={label}
-          variant="outlined"
-          {...textFieldProps}
-          inputProps={{ 'data-testid': dataTestId }}
-          FormHelperTextProps={{
-            id: `${dataTestId}-error`,
-          }}
-        />
+        <Box mb={2}>
+          <TextField
+            helperText={null}
+            size="small"
+            error={!!error}
+            onChange={onChange}
+            value={value}
+            fullWidth
+            label={label}
+            variant="outlined"
+            {...textFieldProps}
+            inputProps={{ 'data-testid': dataTestId }}
+            sx={{ mb: 0 }}
+          />
+          {error && (
+            <Typography
+              variant="caption"
+              color="error"
+              data-testid={`${dataTestId}-error`}
+            >
+              {error.message}
+            </Typography>
+          )}
+        </Box>
       )}
     />
   );

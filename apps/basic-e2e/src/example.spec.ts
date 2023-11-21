@@ -1,8 +1,14 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
+test('Verify that title is "Login Screen"', async ({ page }) => {
   await page.goto('/');
 
-  // Expect h1 to contain a substring.
-  expect(await page.locator('h1').innerText()).toContain('Welcome');
+  await expect(page).toHaveTitle(new RegExp('Login Screen'));
+});
+
+test('Verify that the "login-button" is inactive', async ({ page }) => {
+  await page.goto('/');
+  const elm = page.getByTestId('login-button');
+
+  await expect(elm).toBeDisabled();
 });
