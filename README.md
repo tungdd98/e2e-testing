@@ -67,3 +67,8 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 - [Join the community](https://nx.dev/community)
 - [Subscribe to the Nx Youtube Channel](https://www.youtube.com/@nxdevtools)
 - [Follow us on Twitter](https://twitter.com/nxdevtools)
+
+## Mores
+
+- [Playwright with Cucumber](https://talent500.co/blog/how-to-integrate-cucumber-with-playwright/)
+- [Playwright-bdd](https://vitalets.github.io/playwright-bdd/#/./recipes?id=ignoring-generated-files)

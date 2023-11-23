@@ -8,7 +8,11 @@ test('Verify that title is "Login Screen"', async ({ page }) => {
 
 test('Verify that the "login-button" is inactive', async ({ page }) => {
   await page.goto('/');
+  const inputEmail = page.getByTestId('login-input-email');
+  const inputPassword = page.getByTestId('login-input-password');
   const elm = page.getByTestId('login-button');
+  await inputEmail.fill('');
+  await inputPassword.fill('');
 
   await expect(elm).toBeDisabled();
 });
